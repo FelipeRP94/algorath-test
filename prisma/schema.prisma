@@ -13,7 +13,6 @@ generator client {
 model Users {
   id             Int     @id @default(autoincrement())
   name           String
-  connectedUsers Users[] @relation(name: "ConnectedUsers")
-  Users          Users?  @relation("ConnectedUsers", fields: [usersId], references: [id])
-  usersId        Int?
+  connectedUsers Users[] @relation("ConnectedUsers")
+  connectedUsersRelation Users[] @relation("ConnectedUsers")
 }
