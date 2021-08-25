@@ -1,0 +1,9 @@
+.createUser {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.createUser input {
+  width: 20%;
+  margin-right: 10px;
+}
