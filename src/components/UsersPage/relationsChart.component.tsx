@@ -25,10 +25,10 @@ export const RelationsChart = (props: Props) => {
 
       const conditionsToFillData: { [key: number]: boolean } = {
         0: totalConnectedUsers === 0,
-        1: totalConnectedUsers >= 1 && totalConnectedUsers <= 5,
-        2: totalConnectedUsers >= 6 && totalConnectedUsers <= 10,
-        3: totalConnectedUsers >= 11 && totalConnectedUsers <= 15,
-        4: totalConnectedUsers > 15,
+        1: totalConnectedUsers >= 1 && totalConnectedUsers <= 3,
+        2: totalConnectedUsers >= 4 && totalConnectedUsers <= 6,
+        3: totalConnectedUsers >= 7 && totalConnectedUsers <= 9,
+        4: totalConnectedUsers > 9,
       };
 
       Object.keys(conditionsToFillData).forEach((conditionIndex) => {
@@ -37,7 +37,7 @@ export const RelationsChart = (props: Props) => {
     });
 
   const chartInfo = {
-    labels: ["0", "1-5", "6-10", "11-15", "+15"],
+    labels: ["0", "1-3", "4-6", "7-9", "+9"],
     datasets: [
       {
         label: "# of relations",
