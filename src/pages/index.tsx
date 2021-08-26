@@ -32,7 +32,7 @@ const UserList: NextPage = () => {
   return (
     <>
       <div className={styles.createUser}>
-        <Input placeholder="New user" onChange={onChangeName} />
+        <Input placeholder="New user" onChange={onChangeName} value={name} />
         <Button colorScheme="blue" onClick={createUser}>
           Add User
         </Button>
