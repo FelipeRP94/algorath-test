@@ -42,7 +42,6 @@ const connectUser = (data: {
     method: "POST",
     body: JSON.stringify({ user1Id, user2Id }),
   };
-  console.log(data);
   return fetch("api/users", requestConfig)
     .then((response) => {
       if (response.ok) return response.json();
