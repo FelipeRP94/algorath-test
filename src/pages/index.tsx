@@ -22,6 +22,7 @@ const UserList: NextPage = () => {
   }, [dispatch]);
 
   const onChangeName = (event: any) => setName(event.target.value);
+
   const createUser = () => {
     if (name === "") {
       toast.error("Name is required");

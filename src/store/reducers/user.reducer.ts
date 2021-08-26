@@ -1,5 +1,5 @@
 import { AnyAction } from "redux";
-import { createDefaultUsersState, User, UsersState } from "../../model/user";
+import { createDefaultUsersState, UsersState } from "../../model/user";
 import { getUsersListActionTypes } from "../actions/getUsersList.actions";
 
 export const usersReducer = (

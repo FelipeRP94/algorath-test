@@ -1,17 +1,8 @@
-import {
-  Table,
-  Thead,
-  Tbody,
-  Tr,
-  Th,
-  Td,
-  Button,
-  Heading,
-} from "@chakra-ui/react";
-import { useDispatch, useSelector } from "react-redux";
-import { User } from "../../model/user";
 import { connectUserAction } from "../../store/actions/connectUser.actions";
 import { ReduxState } from "../../store/reduxState";
+import { Table, Thead, Tbody, Tr, Th, Td, Button } from "@chakra-ui/react";
+import { useDispatch, useSelector } from "react-redux";
+import { User } from "../../model/user";
 
 interface Props {
   baseUser: User;

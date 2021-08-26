@@ -7,10 +7,10 @@ import {
   ModalCloseButton,
   Heading,
 } from "@chakra-ui/react";
-import { useSelector } from "react-redux";
 import { ReduxState } from "../../store/reduxState";
-import styles from "../../styles/UserDetail.module.css";
+import { useSelector } from "react-redux";
 import { UsersToConnectTable } from "./usersToConnect.component";
+import styles from "../../styles/UserDetail.module.css";
 
 interface Props {
   userId: number;

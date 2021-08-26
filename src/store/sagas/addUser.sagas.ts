@@ -1,8 +1,8 @@
 import { addUserActionTypes } from "../actions/addUser.actions";
 import { AnyAction } from "redux";
 import { call, put, takeEvery } from "@redux-saga/core/effects";
-import { userService } from "../../services/user.services";
 import { getUsersListRequestAction } from "../actions/getUsersList.actions";
+import { userService } from "../../services/user.services";
 import toast from "react-hot-toast";
 
 export function* addUserSaga(action: AnyAction) {

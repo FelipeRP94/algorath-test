@@ -1,4 +1,4 @@
-import { createDefaultUsersState, User, UsersState } from "../model/user";
+import { createDefaultUsersState, UsersState } from "../model/user";
 
 export interface ReduxState {
   usersState: UsersState;

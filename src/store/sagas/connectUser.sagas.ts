@@ -1,9 +1,9 @@
-import toast from "react-hot-toast";
 import { AnyAction } from "redux";
 import { call, put, takeEvery } from "redux-saga/effects";
-import { userService } from "../../services/user.services";
 import { connectUserActionTypes } from "../actions/connectUser.actions";
 import { getUsersListRequestAction } from "../actions/getUsersList.actions";
+import { userService } from "../../services/user.services";
+import toast from "react-hot-toast";
 
 export function* connectUserSaga(action: AnyAction) {
   try {

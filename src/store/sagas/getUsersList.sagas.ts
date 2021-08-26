@@ -1,11 +1,11 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-import { User } from "../../model/user";
-import { userService } from "../../services/user.services";
 import {
   getUsersListActionTypes,
-  getUsersListErrorAction,
   getUsersListSucessAction,
 } from "../actions/getUsersList.actions";
+import { User } from "../../model/user";
+import { userService } from "../../services/user.services";
+import toast from "react-hot-toast";
 
 export function* getUsersListSaga() {
   try {
@@ -13,7 +13,7 @@ export function* getUsersListSaga() {
 
     yield put(getUsersListSucessAction(usersList));
   } catch (error) {
-    yield put(getUsersListErrorAction(error.message));
+    toast.error(error.message);
   }
 }
 

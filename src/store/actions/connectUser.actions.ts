@@ -1,4 +1,3 @@
-import { User } from "../../model/user";
 import { AnyAction } from "redux";
 
 export const connectUserActionTypes = {

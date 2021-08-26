@@ -1,5 +1,5 @@
-import { User } from "../model/user";
 import { defaultRequestConfig } from "./helpers";
+import { User } from "../model/user";
 
 const getUsersList = (): Promise<User[]> => {
   return fetch("api/users", defaultRequestConfig)

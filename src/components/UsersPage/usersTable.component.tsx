@@ -50,14 +50,12 @@ export const UsersTable = (props: Props) => {
           ))}
         </Tbody>
       </Table>
-      {selectedUserId ? (
+      {selectedUserId > 0 && (
         <UserDetailDialog
           userId={selectedUserId}
           modalOpen={isOpen}
           onClose={onClose}
         />
-      ) : (
-        <></>
       )}
     </>
   );
