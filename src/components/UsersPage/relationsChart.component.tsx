@@ -1,3 +1,4 @@
+import { Doughnut } from "react-chartjs-2";
 import {
   Modal,
   ModalOverlay,
@@ -5,9 +6,7 @@ import {
   ModalHeader,
   ModalBody,
   ModalCloseButton,
-  Heading,
 } from "@chakra-ui/react";
-import { Doughnut } from "react-chartjs-2";
 import { User } from "../../model/user";
 
 interface Props {
@@ -24,7 +23,7 @@ export const RelationsChart = (props: Props) => {
     users.forEach((user) => {
       const totalConnectedUsers = user.connectedUsers?.length || 0;
 
-      const conditionsToFillData = {
+      const conditionsToFillData: { [key: number]: boolean } = {
         0: totalConnectedUsers === 0,
         1: totalConnectedUsers >= 1 && totalConnectedUsers <= 5,
         2: totalConnectedUsers >= 6 && totalConnectedUsers <= 10,
@@ -32,8 +31,8 @@ export const RelationsChart = (props: Props) => {
         4: totalConnectedUsers > 15,
       };
 
-      Object.keys(conditionsToFillData).forEach((conditionIndex: string) => {
-        conditionsToFillData[conditionIndex] && data[conditionIndex]++;
+      Object.keys(conditionsToFillData).forEach((conditionIndex) => {
+        conditionsToFillData[+conditionIndex] && data[+conditionIndex]++;
       });
     });
 
