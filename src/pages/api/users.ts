@@ -1,6 +1,6 @@
-import type { NextApiRequest, NextApiResponse } from "next";
 import { User } from "../../model/user";
 import { userRepository } from "./repository/users.repository";
+import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(
   req: NextApiRequest,
@@ -26,8 +26,12 @@ export default async function handler(
 }
 
 const getUsersList = async (res: NextApiResponse) => {
-  const users = await userRepository.getUsersList();
-  res.status(200).json(users);
+  try {
+    const users = await userRepository.getUsersList();
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
 };
 
 const addUser = async (req: NextApiRequest, res: NextApiResponse) => {
