@@ -19,10 +19,10 @@ interface Props {
 export const UsersTable = (props: Props) => {
   const { users } = props;
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [selectedUser, setSelectedUser] = useState({ id: 0, name: "" });
+  const [selectedUserId, setSelectedUserId] = useState(0);
 
-  const showUserDetails = (user: User) => {
-    setSelectedUser(user);
+  const showUserDetails = (userId: number) => {
+    setSelectedUserId(userId);
     onOpen();
   };
 
@@ -42,18 +42,22 @@ export const UsersTable = (props: Props) => {
               <Td>{user.name}</Td>
               <Td>{user.connectedUsers?.length}</Td>
               <Td>
-                <Button onClick={() => showUserDetails(user)}>Details</Button>
+                <Button onClick={() => showUserDetails(user.id)}>
+                  Details
+                </Button>
               </Td>
             </Tr>
           ))}
         </Tbody>
       </Table>
-      {selectedUser && (
+      {selectedUserId ? (
         <UserDetailDialog
-          user={selectedUser}
+          userId={selectedUserId}
           modalOpen={isOpen}
           onClose={onClose}
         />
+      ) : (
+        <></>
       )}
     </>
   );

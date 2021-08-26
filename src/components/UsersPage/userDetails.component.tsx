@@ -7,19 +7,25 @@ import {
   ModalCloseButton,
   Heading,
 } from "@chakra-ui/react";
-import { User } from "../../model/user";
+import { useSelector } from "react-redux";
+import { ReduxState } from "../../store/reduxState";
 import styles from "../../styles/UserDetail.module.css";
+import { UsersToConnectTable } from "./usersToConnect.component";
 
 interface Props {
-  user: User;
+  userId: number;
   modalOpen: boolean;
   onClose: () => void;
 }
 
 export const UserDetailDialog = (props: Props) => {
-  const { user, modalOpen, onClose } = props;
+  const { userId, modalOpen, onClose } = props;
 
-  return (
+  const user = useSelector((state: ReduxState) =>
+    state.usersState.usersList.find((user) => user.id === userId)
+  );
+
+  return user ? (
     <Modal onClose={onClose} size="xl" isOpen={modalOpen} isCentered>
       <ModalOverlay />
       <ModalContent>
@@ -30,7 +36,7 @@ export const UserDetailDialog = (props: Props) => {
         </ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          <Heading as="h4" size="md">
+          <Heading className={styles.heading} as="h4" size="md">
             Connections
           </Heading>
           {user.connectedUsers && user.connectedUsers.length > 0 ? (
@@ -43,8 +49,14 @@ export const UserDetailDialog = (props: Props) => {
             <p>No connections yet</p>
           )}
           <hr />
+          <Heading className={styles.heading} as="h4" size="md">
+            Connect to users
+          </Heading>
+          <UsersToConnectTable baseUser={user} />
         </ModalBody>
       </ModalContent>
     </Modal>
+  ) : (
+    <></>
   );
 };
