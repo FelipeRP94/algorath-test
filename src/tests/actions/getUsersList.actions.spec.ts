@@ -3,6 +3,7 @@ import {
   getUsersListRequestAction,
   getUsersListSucessAction,
 } from "../../store/actions/getUsersList.actions";
+import { userListMock } from "../mock/userList.mock";
 
 describe("getUsersListRequestAction", () => {
   it("Contains the expected type GET_USERS_LIST_REQUEST", () => {
@@ -23,14 +24,9 @@ describe("getUsersListRequestAction", () => {
 });
 
 describe("getUsersListSucessAction", () => {
-  const userList = [
-    { id: 1, name: "Felipe Ruiz" },
-    { id: 2, name: "Carlos Montoya" },
-  ];
-
   it("Contains the expected type GET_USERS_LIST_SUCCESS", () => {
     // Act
-    const action = getUsersListSucessAction(userList);
+    const action = getUsersListSucessAction(userListMock);
 
     // Assert
     expect(action.type).toBe(getUsersListActionTypes.GET_USERS_LIST_SUCCESS);
@@ -38,9 +34,9 @@ describe("getUsersListSucessAction", () => {
 
   it("Contains the expected payload as null", () => {
     // Act
-    const action = getUsersListSucessAction(userList);
+    const action = getUsersListSucessAction(userListMock);
 
     // Assert
-    expect(action.payload).toEqual(userList);
+    expect(action.payload).toEqual(userListMock);
   });
 });

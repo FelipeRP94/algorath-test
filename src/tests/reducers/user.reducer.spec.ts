@@ -1,6 +1,7 @@
 import { createDefaultUsersState, UsersState } from "../../model/user";
 import { getUsersListActionTypes } from "../../store/actions/getUsersList.actions";
 import { usersReducer } from "../../store/reducers/user.reducer";
+import { userListMock } from "../mock/userList.mock";
 
 describe("usersReducer", () => {
   let originalState: UsersState;
@@ -27,10 +28,7 @@ describe("usersReducer", () => {
     // Arrange
     const getUsersListSucessAction = {
       type: getUsersListActionTypes.GET_USERS_LIST_SUCCESS,
-      payload: [
-        { id: 1, name: "Felipe Ruiz" },
-        { id: 2, name: "Carlos Montoya" },
-      ],
+      payload: userListMock,
     };
 
     // Act
