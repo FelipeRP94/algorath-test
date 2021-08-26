@@ -1,7 +1,8 @@
 import { addUserRequestAction } from "../store/actions/addUser.actions";
-import { Button, Input } from "@chakra-ui/react";
+import { Button, Input, useDisclosure } from "@chakra-ui/react";
 import { getUsersListRequestAction } from "../store/actions/getUsersList.actions";
 import { ReduxState } from "../store/reduxState";
+import { RelationsChart } from "../components/UsersPage/relationsChart.component";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { UsersTable } from "../components/UsersPage/usersTable.component";
@@ -14,6 +15,7 @@ const UserList: NextPage = () => {
   const dispatch = useDispatch();
   const { usersList } = useSelector((state: ReduxState) => state.usersState);
   const [name, setName] = useState("");
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
     dispatch(getUsersListRequestAction());
@@ -39,10 +41,16 @@ const UserList: NextPage = () => {
       </div>
       <hr />
       {usersList && usersList.length > 0 ? (
-        <UsersTable users={usersList} />
+        <>
+          <Button className={styles.stats} colorScheme="blue" onClick={onOpen}>
+            Show stats
+          </Button>
+          <UsersTable users={usersList} />
+        </>
       ) : (
         <h1>Loading users...</h1>
       )}
+      <RelationsChart users={usersList} modalOpen={isOpen} onClose={onClose} />
     </>
   );
 };

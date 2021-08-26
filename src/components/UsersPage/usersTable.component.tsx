@@ -28,7 +28,7 @@ export const UsersTable = (props: Props) => {
 
   return (
     <>
-      <Table variant="simple">
+      <Table variant="simple" size="sm">
         <Thead>
           <Tr>
             <Th>Name</Th>

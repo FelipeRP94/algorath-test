@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
       <ChakraProvider>
-        <Toaster position="top-right" />
+        <Toaster />
         <Component {...pageProps} />
       </ChakraProvider>
     </Provider>
